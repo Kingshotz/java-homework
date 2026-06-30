@@ -1,4 +1,4 @@
-package ge.tbc.testautomation.figures;
+package ge.tbc.testautomation.javaoop.figures;
 
 public class Triangle  extends Figure{
     private double a;
