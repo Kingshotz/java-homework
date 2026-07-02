@@ -1,18 +1,19 @@
 package ge.tbc.testautomation.javaoop.figures;
 
+import ge.tbc.testautomation.javaoop.abstractClassesInterfaces.Figure;
+import ge.tbc.testautomation.javaoop.abstractClassesInterfaces.IResizable;
+import ge.tbc.testautomation.javaoop.abstractClassesInterfaces.IValidFigure;
 import ge.tbc.testautomation.javaoop.exceptionsStringOperationsRegex.LimitException;
 import ge.tbc.testautomation.javaoop.exceptionsStringOperationsRegex.RadiusException;
 
-public class Circle  extends Figure{
+public class Circle  extends Figure implements IResizable, IValidFigure {
     private double radius;
-    public static int numberOfCircleInstances = 0;
     public Circle(double radius){
-        if(Figure.numberOfInstances>5){
-            throw new LimitException("INSTANTIATION LIMIT REACHED");
+        this.radius = radius;
+        if(!this.validateFigure()){
+//            throw new IllegalArgumentException(String.format("Circle with radius: %f is not valid and can't be created", radius));
+            throw new IllegalArgumentException(this.toString() + " is not valid and can't be created");
         }
-        //setershi gavakete checki
-        this.setRadius(radius);
-        numberOfCircleInstances++;
     }
 
     public double getRadius() {
@@ -20,10 +21,48 @@ public class Circle  extends Figure{
     }
 
     public void setRadius(double radius) {
-        if(radius<=0){
-            throw new RadiusException("RADIUS VALUE NOT VALID");
-        }else {
-            this.radius = radius;
+        if(!this.validateFigure()){
+            throw new IllegalArgumentException(String.format("Radius: %f is not valid and can't be set",radius));
         }
+        this.radius = radius;
+    }
+
+    @Override
+    public double getArea() {
+        return radius*radius*Math.PI;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 2*Math.PI*radius;
+    }
+
+    @Override
+    public void printPackageName() {
+        String pkg = this.getClass().getPackageName();
+        System.out.println(pkg.isEmpty() ? "default package" : pkg);
+    }
+
+    @Override
+    public void doubleSize() {
+        //fartobs gauormagebs
+        this.radius = radius*Math.sqrt(2);
+    }
+
+    @Override
+    public void customSize(double byValue) {
+        if(byValue<=0)
+            throw new IllegalArgumentException("you can't make circle size negative!");
+        this.radius = radius*Math.sqrt(byValue);
+    }
+
+    @Override
+    public boolean validateFigure() {
+        return radius>0;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Circle [Radius: %f]", this.radius);
     }
 }
