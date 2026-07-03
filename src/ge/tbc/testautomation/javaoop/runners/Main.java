@@ -95,6 +95,6 @@ public class Main {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("\n Some Line from abstractClassesInferfaces");
+        System.out.println("\n Some Line");
     }
 }
