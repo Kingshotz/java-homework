@@ -89,5 +89,12 @@ public class Main {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+        //added another triangle check
+        try {
+            Triangle degenerateTriangle = new Triangle(8, -2, 6);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("\n Some Line");
     }
 }
