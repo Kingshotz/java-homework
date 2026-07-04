@@ -48,7 +48,7 @@ public class ContainersAndComparing {
         }
         System.out.println(circlesHashSet);
 
-        System.out.println("\n--------- printing rectangles---------------");
+        System.out.println("\n--------- printing rectangles-------------");
         List<Rectangle> rectangles = new ArrayList<>();
         for(int i=0;i<10;i++){
             rectangles.add(new Rectangle(rand.nextDouble()*10, rand.nextDouble()*10 ));
