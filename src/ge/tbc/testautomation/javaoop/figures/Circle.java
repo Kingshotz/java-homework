@@ -6,12 +6,12 @@ import ge.tbc.testautomation.javaoop.abstractClassesInterfaces.IValidFigure;
 import ge.tbc.testautomation.javaoop.exceptionsStringOperationsRegex.LimitException;
 import ge.tbc.testautomation.javaoop.exceptionsStringOperationsRegex.RadiusException;
 
-public class Circle  extends Figure implements IResizable, IValidFigure, Comparable<Circle> {
+public class Circle  extends Figure implements IResizable, IValidFigure {
     private double radius;
-
     public Circle(double radius){
         this.radius = radius;
         if(!this.validateFigure()){
+//            throw new IllegalArgumentException(String.format("Circle with radius: %f is not valid and can't be created", radius));
             throw new IllegalArgumentException(this.toString() + " is not valid and can't be created");
         }
     }
@@ -64,10 +64,5 @@ public class Circle  extends Figure implements IResizable, IValidFigure, Compara
     @Override
     public String toString() {
         return String.format("Circle [Radius: %f]", this.radius);
-    }
-
-    @Override
-    public int compareTo(Circle o) {
-        return Double.compare(this.radius, o.radius);
     }
 }
