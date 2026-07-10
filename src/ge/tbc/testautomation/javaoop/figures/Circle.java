@@ -12,6 +12,7 @@ public class Circle  extends Figure implements IResizable, IValidFigure, Compara
     public Circle(double radius){
         this.radius = radius;
         if(!this.validateFigure()){
+//            throw new IllegalArgumentException(String.format("Circle with radius: %f is not valid and can't be created", radius));
             throw new IllegalArgumentException(this.toString() + " is not valid and can't be created");
         }
     }
